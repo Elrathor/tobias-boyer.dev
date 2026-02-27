@@ -1,0 +1,228 @@
+@font-face {
+    font-family: "Instrument Sans";
+    src: url("../../fonts/InstrumentSans-Regular.woff2") format("woff2");
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Instrument Sans";
+    src: url("../../fonts/InstrumentSans-Italic.woff2") format("woff2");
+    font-weight: 400;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Instrument Sans";
+    src: url("../../fonts/InstrumentSans-Medium.woff2") format("woff2");
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Instrument Sans";
+    src: url("../../fonts/InstrumentSans-MediumItalic.woff2") format("woff2");
+    font-weight: 500;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Instrument Sans";
+    src: url("../../fonts/InstrumentSans-SemiBold.woff2") format("woff2");
+    font-weight: 600;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Instrument Sans";
+    src: url("../../fonts/InstrumentSans-SemiBoldItalic.woff2") format("woff2");
+    font-weight: 600;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Instrument Sans";
+    src: url("../../fonts/InstrumentSans-Bold.woff2") format("woff2");
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Instrument Sans";
+    src: url("../../fonts/InstrumentSans-BoldItalic.woff2") format("woff2");
+    font-weight: 700;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "JetBrains Mono";
+    src: url("../../fonts/JetBrainsMono-Regular.woff2") format("woff2");
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "JetBrains Mono";
+    src: url("../../fonts/JetBrainsMono-Bold.woff2") format("woff2");
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Source Serif 4";
+    src: url("../../fonts/SourceSerif4-Light.otf.woff2") format("woff2");
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Source Serif 4";
+    src: url("../../fonts/SourceSerif4-LightIt.otf.woff2") format("woff2");
+    font-weight: 300;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Source Serif 4";
+    src: url("../../fonts/SourceSerif4-Regular.otf.woff2") format("woff2");
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Source Serif 4";
+    src: url("../../fonts/SourceSerif4-It.otf.woff2") format("woff2");
+    font-weight: 400;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Source Serif 4";
+    src: url("../../fonts/SourceSerif4-Semibold.otf.woff2") format("woff2");
+    font-weight: 600;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Source Serif 4";
+    src: url("../../fonts/SourceSerif4-SemiboldIt.otf.woff2") format("woff2");
+    font-weight: 600;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Source Serif 4";
+    src: url("../../fonts/SourceSerif4-Bold.otf.woff2") format("woff2");
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Source Serif 4";
+    src: url("../../fonts/SourceSerif4-BoldIt.otf.woff2") format("woff2");
+    font-weight: 700;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Source Serif 4";
+    src: url("../../fonts/SourceSerif4-Black.otf.woff2") format("woff2");
+    font-weight: 900;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Source Serif 4";
+    src: url("../../fonts/SourceSerif4-BlackIt.otf.woff2") format("woff2");
+    font-weight: 900;
+    font-style: italic;
+    font-display: swap;
+}
+
+/* https://rosepinetheme.com/palette/ */
+:root {
+    /* Rosé Pine Dawn (Light) Colors */
+    --theme: #faf4ed;         /* Base */
+    --entry: #f2e9e1;         /* Overlay */
+    --primary: #575279;       /* Text */
+    --secondary: #797593;     /* Subtle */
+    --tertiary: #9893a5;      /* Muted */
+    --content: #575279;       /* Text */
+    --code-block-bg: #191724; /* Base but Inverted to Original */
+    --code-bg: #fffaf3;       /* Surface */
+    --border: #cecacd;        /* Highlight High */
+    --selection-text: #575279;
+    --selection-bg: #e0def4;
+
+    /* Typography */
+    --font-body: "Source Serif 4", Georgia, "Times New Roman", Times, serif;
+    --font-heading: "Instrument Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+    --font-mono: "JetBrains Mono", "SFMono-Regular", Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+}
+
+:root[data-theme="dark"] {
+    /* Rosé Pine Main (Dark) Colors */
+    --theme: #191724;         /* Base */
+    --entry: #26233a;         /* Overlay */
+    --primary: #e0def4;       /* Text */
+    --secondary: #908caa;     /* Subtle */
+    --tertiary: #6e6a86;      /* Muted */
+    --content: #e0def4;       /* Text */
+    --code-block-bg:#21202e; /* Highlight Low */
+    --code-bg: #1f1d2e;       /* Surface */
+    --border: #524f67;        /* Borders */
+    --selection-text: #e0def4;
+    --selection-bg: #403d52;
+}
+
+::selection {
+    color: var(--selection-text);
+    background: var(--selection-bg);
+}
+
+::-moz-selection {
+    color: var(--selection-text);
+    background: var(--selection-bg);
+}
+
+body {
+    font-family: var(--font-body);
+    font-weight: 300;
+}
+
+.logo,
+.post-meta,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: var(--font-heading);
+}
+
+code,
+pre,
+kbd,
+samp {
+    font-family: var(--font-mono);
+}

@@ -1,0 +1,61 @@
+baseURL: https://elrathor.github.io/tobias-boyer.dev
+languageCode: en-us
+title: Tobias Talks
+copyright: © Tobias Boyer
+theme: PaperMod
+buildDrafts: false
+buildFuture: false
+buildExpired: false
+minify:
+  disableXML: true
+  minifyOutput: true
+
+outputs:
+  home:
+    - HTML
+    - RSS
+    - JSON
+
+menu:
+    main:
+        - name: Archive
+          url: archives
+          weight: 5
+        - name: Search
+          url: search/
+          weight: 10
+        - name: Tags
+          url: tags/
+          weight: 10
+        - name: About & Contact
+          url: about/
+
+params:
+    env: production
+    description: My Small Home on the Big Internet
+    author: Tobias Boyer
+    defaultTheme: auto
+    showReadingTime: true
+    ShowPostNavLinks: false
+    ShowBreadCrumbs: false
+    ShowCodeCopyButtons: true
+    ShowRssButtonInSectionTermList: true
+    ShowAllPagesInArchive: true
+    ShowPageNums: true
+    ShowToc: true
+    images: ["images/berry.jpg"]
+
+    homeInfoParams:
+        Title: Hi there, I'm Tobias.
+        Content: >
+            Welcome to my tiny piece of digital dirt on the big internet.
+
+            Stay a while, take a look around. If you found your way here, I am sure there is something that peaks your interest.
+
+    socialIcons:
+        - name: bluesky
+          title: Visit me on Bluesky
+          url: https://bsky.app/profile/elrathor.bsky.social
+        - name: mastodon
+          title: Visit me on Mastodon
+          url: https://bynight.cafe/@elrathor
