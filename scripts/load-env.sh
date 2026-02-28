@@ -3,7 +3,7 @@
 # useful for local development with open tofu
 # Usage: source ./scripts/load-env.sh (or: . ./scripts/load-env.sh)
 
-SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]:-$0}")" && pwd)"
 ENV_FILE="$SCRIPT_DIR/../.env"
 
 if [[ -f "$ENV_FILE" ]]; then
@@ -11,17 +11,18 @@ if [[ -f "$ENV_FILE" ]]; then
         # Skip empty lines and comments
         [[ -z "$line" || "$line" =~ ^[[:space:]]*# ]] && continue
 
-        if [[ "$line" =~ ^[[:space:]]*([^#][^=]+?)[[:space:]]*=[[:space:]]*\"?(.*?)\"?[[:space:]]*$ ]]; then
-            name="${BASH_REMATCH[1]}"
-            value="${BASH_REMATCH[2]}"
+        # Split on first '=' and trim quotes
+        name="${line%%=*}"
+        value="${line#*=}"
+        # Remove carriage returns and surrounding double quotes
+        value=$(printf '%s' "$value" | tr -d '\r' | sed 's/^"//;s/"$//')
 
-            case "$name" in
-                S3_ACCESS_KEY)           export AWS_ACCESS_KEY_ID="$value" ;;
-                S3_SECRET_KEY)           export AWS_SECRET_ACCESS_KEY="$value" ;;
-                CLOUDFLARE_TOKEN_VALUE)  export CLOUDFLARE_API_TOKEN="$value" ;;
-                HETZNER_TOKEN)           export TF_VAR_hcloud_token="$value" ;; # Prefix with TF_VAR_ to make it available as a variable in Terraform
-            esac
-        fi
+        case "$name" in
+            S3_ACCESS_KEY)           export AWS_ACCESS_KEY_ID="$value" ;;
+            S3_SECRET_KEY)           export AWS_SECRET_ACCESS_KEY="$value" ;;
+            CLOUDFLARE_TOKEN_VALUE)  export CLOUDFLARE_API_TOKEN="$value" ;;
+            HETZNER_TOKEN)           export TF_VAR_hcloud_token="$value" ;; # Prefix with TF_VAR_ to make it available as a variable in Terraform
+        esac
     done < "$ENV_FILE"
     echo "Environment variables loaded from .env"
 else
