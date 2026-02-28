@@ -1,5 +1,31 @@
 services:
-  web:
+  web-images:
     image: nginx:latest
+
+  web-static-page:
+    image: httpd:latest
+    labels:
+      - "traefik.http.routers.test2.rule=Host(`test2.localhost`)"
+  
+  cache:
+    environment:
+        - VARNISH_BACKEND_HOST=web
+        - VARNISH_BACKEND_PORT=80
+    tmpfs: /var/lib/varnish/varnishd:exec
+    ports:
+      - 8123:80
+    image: varnish
+    labels:
+      - "traefik.http.routers.test1.rule=Host(`test1.localhost`)"
+
+  reverse-proxy:
+    image: traefik:v3.6
+    command:
+      - "--api.insecure=true"
+      - "--providers.docker=true"
+      - "--entrypoints.web.address=:80"
     ports:
       - "80:80"
+      - "8080:8080"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
