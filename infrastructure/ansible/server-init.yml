@@ -1,7 +1,7 @@
 ---
 
 - name: Prepare Server for application deployment
-  connection: ansible.netcommon.network_cli
+  connection: ssh
   gather_facts: true
   hosts: all
   become: true
