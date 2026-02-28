@@ -28,3 +28,21 @@ terraform {
 provider "hcloud" {
   token = var.hcloud_token
 }
+
+resource "hcloud_ssh_key" "default" {
+  name       = "tobias-boyer-dev"
+  public_key = file("~/.ssh/id_ed25519.pub")
+}
+
+resource "hcloud_server" "web" {
+  name        = "tobias-boyer-dev"
+  image       = "ubuntu-24.04"
+  server_type = "cx23"
+  location    = "nbg1"
+  ssh_keys    = [hcloud_ssh_key.default.id]
+
+  public_net {
+    ipv4_enabled = true
+    ipv6_enabled = true
+  }
+}
