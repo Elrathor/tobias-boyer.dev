@@ -1,0 +1,26 @@
+---
+
+- name: Deploy Docker Compose application
+  connection: ssh
+  gather_facts: false
+  hosts: all
+  become: true
+
+  tasks:
+    - name: Create application directory
+      ansible.builtin.file:
+        path: /opt/tobias-boyer-dev
+        state: directory
+        mode: "0755"
+
+    - name: Copy compose.yml to server
+      ansible.builtin.copy:
+        src: ../../compose.yml
+        dest: /opt/tobias-boyer-dev/compose.yml
+        mode: "0644"
+
+    - name: Deploy with Docker Compose
+      community.docker.docker_compose_v2:
+        project_src: /opt/tobias-boyer-dev
+        state: present
+        remove_orphans: true
