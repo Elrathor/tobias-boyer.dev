@@ -14,8 +14,8 @@ if [[ -f "$ENV_FILE" ]]; then
         # Split on first '=' and trim quotes
         name="${line%%=*}"
         value="${line#*=}"
-        # Remove carriage returns and surrounding double quotes
-        value=$(printf '%s' "$value" | tr -d '\r' | sed 's/^"//;s/"$//')
+        # Remove carriage returns and surrounding quotes (double or single)
+        value=$(printf '%s' "$value" | tr -d '\r' | sed "s/^[\"']//;s/[\"']$//")
 
         case "$name" in
             S3_ACCESS_KEY)           export AWS_ACCESS_KEY_ID="$value" ;;

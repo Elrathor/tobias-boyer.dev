@@ -2,7 +2,7 @@
 
 - name: Prepare Server for application deployment
   connection: ssh
-  gather_facts: true
+  gather_facts: false
   hosts: all
   become: true
   roles:
@@ -11,3 +11,6 @@
   pre_tasks:
   - name: Ensure Python 3 is installed
     ansible.builtin.raw: apt-get update && apt-get install -y python3
+
+  - name: Gather facts after Python is available
+    ansible.builtin.setup:
