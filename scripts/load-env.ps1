@@ -13,7 +13,7 @@ if (Test-Path $envFile) {
                 "S3_ACCESS_KEY"  { $env:AWS_ACCESS_KEY_ID = $value }
                 "S3_SECRET_KEY"  { $env:AWS_SECRET_ACCESS_KEY = $value }
                 "CLOUDFLARE_TOKEN_VALUE" { $env:CLOUDFLARE_API_TOKEN = $value }
-                "HETZNER_TOKEN"  { $env:TF_VAR_hcloud_token = $value }
+                "HETZNER_TOKEN"  { $env:TF_VAR_hcloud_token = $value } # Prefix with TF_VAR_ to make it available as a variable in Terraform
             }
         }
     }

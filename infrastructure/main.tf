@@ -1,4 +1,3 @@
-# Tell terraform to use the provider and select a version.
 terraform {
   required_providers {
     hcloud = {
@@ -24,7 +23,6 @@ terraform {
   }
 }
 
-# Configure the Hetzner Cloud Provider
 provider "hcloud" {
   token = var.hcloud_token
 }
@@ -32,6 +30,40 @@ provider "hcloud" {
 resource "hcloud_ssh_key" "default" {
   name       = "tobias-boyer-dev"
   public_key = file("~/.ssh/id_ed25519.pub")
+}
+
+resource "hcloud_firewall" "web-firewall" {
+  name = "tobias-boyer-dev-firewall"
+
+  rule {
+    direction = "in"
+    protocol  = "tcp"
+    port      = "22"
+    source_ips = [
+      "0.0.0.0/0",
+      "::/0"
+    ]
+  }
+
+  rule {
+    direction = "in"
+    protocol  = "tcp"
+    port      = "80"
+    source_ips = [
+      "0.0.0.0/0",
+      "::/0"
+    ]
+  }
+
+  rule {
+    direction = "in"
+    protocol  = "tcp"
+    port      = "443"
+    source_ips = [
+      "0.0.0.0/0",
+      "::/0"
+    ]
+  }
 }
 
 resource "hcloud_server" "web" {
@@ -45,4 +77,5 @@ resource "hcloud_server" "web" {
     ipv4_enabled = true
     ipv6_enabled = true
   }
+  firewall_ids = [hcloud_firewall.web-firewall.id]
 }
